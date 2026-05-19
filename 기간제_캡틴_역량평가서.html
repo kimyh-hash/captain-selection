@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기간제 캡틴 역량 평가서 — B마트운영팀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue-dark:#0C447C;--blue-mid:#185FA5;--blue-light:#E6F1FB;--blue-pale:#F0F7FF;--green-dark:#27500A;--green-mid:#3B6D11;--amber-mid:#BA7517;--purple-dark:#3C3489;--purple-mid:#534AB7;--purple-light:#EEEDFE;--r-bg:#FEF3F2;--r-bd:#FDA29B;--r-tx:#912018;--y-bg:#FFFAEB;--y-bd:#FEC84B;--y-tx:#B54708;--g-bg:#F6FEF9;--g-bd:#6CE9A6;--g-tx:#027A48;--gray-dark:#1E1E1C;--gray-mid:#5F5E5A;--gray-border:#E0DED8;--white:#ffffff;--bg:#F8F7F4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--gray-dark);font-size:14px;line-height:1.6}
+.topbar{background:var(--gray-dark);color:rgba(255,255,255,.7);font-size:12px;padding:.6rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.topbar-org{color:#fff;font-weight:500}
+.print-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:4px 14px;border-radius:4px;font-size:12px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background .15s}
+.print-btn:hover{background:rgba(255,255,255,.22)}
+.page{max-width:920px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.doc-header{background:#fff;border:1px solid var(--gray-border);border-radius:10px;padding:1.75rem 2rem;margin-bottom:1.25rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start}
+.doc-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--blue-mid);text-transform:uppercase;margin-bottom:6px}
+.doc-title{font-size:1.6rem;font-weight:700;margin-bottom:4px}
+.doc-sub{font-size:13px;color:var(--gray-mid)}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-width:290px}
+.meta-field{display:flex;flex-direction:column;gap:3px}
+.meta-label{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.06em;text-transform:uppercase}
+.meta-input{border:1px solid var(--gray-border);border-radius:5px;padding:5px 10px;font-size:13px;font-family:'Noto Sans KR',sans-serif;background:#FAFAF9;color:var(--gray-dark);transition:border-color .15s}
+.meta-input:focus{outline:none;border-color:var(--blue-mid);background:#fff}
+.meta-select{border:1px solid var(--gray-border);border-radius:5px;padding:5px 10px;font-size:13px;font-family:'Noto Sans KR',sans-serif;background:#FAFAF9;color:var(--gray-dark)}
+.ev-guide{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem}
+.ev-card{border-radius:8px;padding:12px 14px;border:1px solid var(--gray-border);background:#fff;display:flex;align-items:flex-start;gap:10px}
+.ev-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ev-role{font-size:12px;font-weight:700;margin-bottom:3px}
+.ev-desc{font-size:12px;color:var(--gray-mid);line-height:1.55}
+.scale-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.sc{border-radius:8px;padding:12px 14px;border:1px solid}
+.sc1{background:var(--r-bg);border-color:var(--r-bd)}.sc2{background:var(--y-bg);border-color:var(--y-bd)}.sc3{background:var(--g-bg);border-color:var(--g-bd)}
+.sc-num{font-size:22px;font-weight:700;margin-bottom:2px}
+.sc1 .sc-num{color:var(--r-tx)}.sc2 .sc-num{color:var(--y-tx)}.sc3 .sc-num{color:var(--g-tx)}
+.sc-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.sc1 .sc-name{color:var(--r-tx)}.sc2 .sc-name{color:var(--y-tx)}.sc3 .sc-name{color:var(--g-tx)}
+.sc-desc{font-size:12px;color:var(--gray-mid);line-height:1.55}
+.conv-guide{background:var(--blue-pale);border:1px solid #C5DCEF;border-left:4px solid var(--blue-mid);border-radius:8px;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:#1a3a5c;line-height:1.7}
+.conv-guide strong{color:var(--blue-dark);font-weight:600}
+.csec{margin-bottom:2rem}
+.csec-hd{display:flex;align-items:center;gap:10px;padding:.7rem 1rem;border-radius:8px 8px 0 0;border:1px solid var(--gray-border);border-bottom:none}
+.csec-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.csec-name{font-size:14px;font-weight:700}
+.csec-desc{font-size:12px;color:var(--gray-mid);margin-left:auto}
+.ci{border:1px solid var(--gray-border);background:#fff}
+.ci:last-child{border-radius:0 0 8px 8px}
+.ci+.ci{border-top:none}
+.ci-hd{display:grid;grid-template-columns:4px 1fr;background:#FAFAF9;border-bottom:1px solid var(--gray-border)}
+.ci-acc{width:4px}
+.ci-hdc{padding:.7rem 1rem}
+.ci-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.ci-def{font-size:12px;color:var(--gray-mid);line-height:1.55}
+.etbl{width:100%;border-collapse:collapse}
+.etbl th{padding:8px 11px;font-size:11px;font-weight:600;text-align:left;background:#F5F5F3;border-bottom:1px solid var(--gray-border);border-right:1px solid var(--gray-border);color:var(--gray-mid);letter-spacing:.04em}
+.etbl th.sth{text-align:center;width:18%}
+.etbl th:last-child{border-right:none;width:5%;text-align:center}
+.etbl td{padding:10px 11px;font-size:12px;vertical-align:top;line-height:1.65;border-bottom:1px solid var(--gray-border);border-right:1px solid var(--gray-border)}
+.etbl td:last-child{border-right:none}
+.etbl tr:last-child td{border-bottom:none}
+.etbl td.ind{font-weight:500;background:#FDFCFB;width:22%}
+.scel{cursor:default}
+.scel.c1{background:var(--r-bg)}.scel.c2{background:var(--y-bg)}.scel.c3{background:var(--g-bg)}
+.schip{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:4px}
+.c1 .schip{background:var(--r-bd);color:var(--r-tx)}.c2 .schip{background:var(--y-bd);color:var(--y-tx)}.c3 .schip{background:var(--g-bd);color:var(--g-tx)}
+.sctx{font-size:12px;line-height:1.55}
+.selcell{text-align:center;vertical-align:middle;border-right:none}
+.rrow{display:flex;flex-direction:column;gap:5px;align-items:center}
+.rbtn{width:28px;height:28px;border-radius:50%;border:2px solid var(--gray-border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gray-mid);transition:all .15s;flex-shrink:0}
+.rbtn:hover{transform:scale(1.1)}
+.rbtn.s1{background:var(--r-bd);border-color:var(--r-tx);color:var(--r-tx)}
+.rbtn.s2{background:var(--y-bd);border-color:var(--y-tx);color:var(--y-tx)}
+.rbtn.s3{background:var(--g-bd);border-color:var(--g-tx);color:var(--g-tx)}
+.cmtrow{border-top:1px solid var(--gray-border);display:grid;grid-template-columns:22px 1fr;background:#fff}
+.cmtside{background:#F8F8F6;border-right:1px solid var(--gray-border);display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.1em;padding:6px 4px}
+.cmtinner{display:grid;grid-template-columns:1fr 1fr}
+.cmtblk{padding:10px 12px;border-right:1px solid var(--gray-border)}
+.cmtblk:last-child{border-right:none}
+.cmtlbl{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.06em;margin-bottom:4px}
+.cmtta{width:100%;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--gray-dark);resize:none;outline:none;min-height:52px;line-height:1.6}
+.cmtta::placeholder{color:#CCC}
+.sumsec{background:#fff;border:1px solid var(--gray-border);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem}
+.sumtitle{font-size:14px;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.25rem}
+.stile{text-align:center;padding:12px 8px;border:1px solid var(--gray-border);border-radius:8px;background:#FAFAF9}
+.stile.tot{background:var(--blue-pale);border:2px solid var(--blue-mid);grid-column:span 2}
+.stile.cnt{grid-column:span 2}
+.slbl{font-size:11px;color:var(--gray-mid);margin-bottom:4px}
+.sval{font-size:22px;font-weight:700;color:var(--gray-dark)}
+.sval span{font-size:12px;font-weight:400;color:var(--gray-mid)}
+.tot .slbl{color:var(--blue-mid)}.tot .sval{color:var(--blue-dark)}
+.verd{border-radius:8px;padding:13px 16px;display:flex;align-items:flex-start;gap:12px;font-size:13px;margin-bottom:1.25rem}
+.verd.pass{background:var(--g-bg);border:1px solid var(--g-bd);color:var(--g-tx)}
+.verd.caut{background:var(--y-bg);border:1px solid var(--y-bd);color:var(--y-tx)}
+.verd.hold{background:var(--r-bg);border:1px solid var(--r-bd);color:var(--r-tx)}
+.vi{font-size:20px;flex-shrink:0;margin-top:1px}
+.verd strong{font-weight:700;display:block;margin-bottom:3px;font-size:14px}
+.gmsec{border:1px solid var(--gray-border);border-radius:8px;overflow:hidden;margin-bottom:1.25rem}
+.gmhd{background:#F5F5F3;padding:9px 14px;font-size:12px;font-weight:700;color:var(--gray-mid);border-bottom:1px solid var(--gray-border)}
+.gmbody{display:grid;grid-template-columns:1fr 1fr}
+.gmcol{padding:12px 14px;border-right:1px solid var(--gray-border)}
+.gmcol:last-child{border-right:none}
+.gmlbl{font-size:11px;font-weight:700;color:var(--gray-mid);margin-bottom:6px}
+.gmta{width:100%;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--gray-dark);resize:none;outline:none;min-height:60px;line-height:1.6}
+.gmta::placeholder{color:#CCC}
+.gmr-row{display:flex;gap:8px;flex-wrap:wrap}
+.gmr{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px}
+.signrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;background:#fff;border:1px solid var(--gray-border);border-radius:10px;padding:1.25rem}
+.signbox{text-align:center}
+.signlbl{font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.06em;margin-bottom:28px}
+.signline{border-bottom:1px solid var(--gray-border);padding-top:8px;font-size:12px;color:var(--gray-mid)}
+@media print{body{background:#fff}.topbar{display:none}.page{max-width:100%;padding:0}.csec{break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+@media(max-width:700px){.doc-header{grid-template-columns:1fr}.scale-guide{grid-template-columns:1fr}.ev-guide{grid-template-columns:1fr}.sgrid{grid-template-columns:1fr 1fr}.cmtinner{grid-template-columns:1fr}.gmbody{grid-template-columns:1fr}.signrow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:16px;"><span class="topbar-org">B마트운영팀</span><span>기간제 캡틴 역량 평가서 · 3개월 주기</span></div>
+  <button class="print-btn" onclick="window.print()">🖨 인쇄 / PDF 저장</button>
+</div>
+<div class="page">
+
+<!-- 헤더 -->
+<div class="doc-header">
+  <div>
+    <div class="doc-eyebrow">Competency Evaluation · Captain · Quarterly</div>
+    <div class="doc-title">기간제 캡틴 역량 평가서</div>
+    <div class="doc-sub">정규직 전환 심사 기반 · 3개월 주기 누적 평가 · CL 평가 / GM 최종 확인</div>
+  </div>
+  <div class="meta-grid">
+    <div class="meta-field"><span class="meta-label">평가 대상</span><input class="meta-input" type="text" placeholder="이름"></div>
+    <div class="meta-field"><span class="meta-label">소속 센터</span><input class="meta-input" type="text" placeholder="센터명"></div>
+    <div class="meta-field"><span class="meta-label">평가 기간</span><input class="meta-input" type="text" placeholder="예) 2025.01–03"></div>
+    <div class="meta-field"><span class="meta-label">평가 회차</span><select class="meta-select"><option>1회차</option><option>2회차</option><option>3회차</option><option>4회차</option><option>5회차 이상</option></select></div>
+    <div class="meta-field"><span class="meta-label">평가자 (CL)</span><input class="meta-input" type="text" placeholder="이름"></div>
+    <div class="meta-field"><span class="meta-label">평가일</span><input class="meta-input" type="date"></div>
+  </div>
+</div>
+
+<!-- 평가자 구조 -->
+<div class="ev-guide">
+  <div class="ev-card"><div class="ev-icon" style="background:#E6F1FB">✍️</div><div><div class="ev-role">CL (센터리더) — 1차 평가</div><div class="ev-desc">3개월간 현장 관찰을 바탕으로 역량 항목별 점수를 부여하고 관찰 근거를 기술한다. 종합 의견 작성 후 GM에게 확인을 요청한다.</div></div></div>
+  <div class="ev-card"><div class="ev-icon" style="background:#EAF3DE">✅</div><div><div class="ev-role">GM — 최종 확인</div><div class="ev-desc">CL 평가 내용을 검토하고 전환 적합 여부에 대한 최종 의견을 기재한다. TO 발생 시 이 문서를 근거로 전환 결정에 참여한다.</div></div></div>
+</div>
+
+<!-- 척도 -->
+<div class="scale-guide">
+  <div class="sc sc1"><div class="sc-num">1</div><div class="sc-name">미흡</div><div class="sc-desc">해당 역량 항목에서 기대 수준에 미치지 못함. 반복적인 지도나 CL의 개입이 필요한 상태</div></div>
+  <div class="sc sc2"><div class="sc-num">2</div><div class="sc-name">충족</div><div class="sc-desc">정규직 캡틴에게 기대되는 기본 수준을 안정적으로 수행하는 상태</div></div>
+  <div class="sc sc3"><div class="sc-num">3</div><div class="sc-name">우수</div><div class="sc-desc">기대 수준을 초과하여 주도적·구조적으로 역량을 발휘하며 주변에 긍정적 영향을 미치는 상태</div></div>
+</div>
+
+<!-- 전환 기준 -->
+<div class="conv-guide"><strong>정규직 전환 판단 기준.</strong> 전체 8개 항목 중 <strong>충족(2점) 이상이 6개 이상</strong>이고, <strong>미흡(1점) 항목이 2개 이하</strong>일 때 전환 적합으로 판단한다. 단, <strong>③ 안전·재고관리 항목에서 미흡(1점)이 확인된 경우 TO 발생 시에도 전환을 보류</strong>한다. 전환은 TO 발생 시점의 누적 평가 이력을 종합하여 GM이 최종 결정한다.</div>
+
+<!-- 역량군 1 -->
+<div class="csec">
+  <div class="csec-hd" style="background:#EEF5FC">
+    <div class="csec-icon" style="background:#185FA5;color:#fff">⚙</div>
+    <div class="csec-name" style="color:#0C447C">역량군 1 · 운영실행</div>
+    <div class="csec-desc">현장 운영을 실질적으로 수행하는 기반 역량 (3개 항목)</div>
+  </div>
+
+  <div class="ci">
+    <div class="ci-hd"><div class="ci-acc" style="background:#185FA5"></div><div class="ci-hdc"><div class="ci-name">① 운영 기준 숙지 및 독립 적용</div><div class="ci-def">SOP와 운영 기준을 이해하고, CL의 지시나 확인 없이도 현장 상황에 맞게 적용한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">CL 부재 시 독립 수행</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">CL에게 확인을 요청하거나 지시가 올 때까지 대응을 보류함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">SOP 내에서 스스로 판단하여 처리하고 사후 보고함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">기준의 이유를 이해하고 상황에 따라 유연하게 적용하며 기간제 캡틴에게도 내재화시킴</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g1a" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g1a" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g1a" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    <tr><td class="ind">예외 상황 판단 및 보고</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">예외 상황에서 판단을 내리지 못하거나 잘못된 기준을 적용함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">기준에 따라 판단하고 판단 내용과 함께 CL에게 신속히 공유함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">판단 근거를 명확히 정리하여 보고하며, 유사 상황 재발 시 선제적으로 대응함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g1b" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g1b" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g1b" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요 (예: ○월 ○일 CL 외근 중 설비 이상 발생 시…)"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+
+  <div class="ci">
+    <div class="ci-hd"><div class="ci-acc" style="background:#185FA5"></div><div class="ci-hdc"><div class="ci-name">② 시간대별 운영 흐름 관리</div><div class="ci-def">피크/비피크 흐름을 이해하고 CL 부재 시에도 크루 배치를 자율적으로 조정하여 운영 공백을 방지한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">자율 배치 조정 및 흐름 유지</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">CL 지시 없이는 배치 변경을 시도하지 않으며, 흐름 공백 발생 시 수동적으로 대기함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">시간대 패턴을 인지하고 CL 부재 시에도 배치를 스스로 조정하여 운영 흐름을 유지함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">일·주 단위 운영 목표를 스스로 점검하고 미달 시 원인을 분석하여 CL에게 보고함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g1c" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g1c" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g1c" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+
+  <div class="ci" style="border-radius:0 0 8px 8px">
+    <div class="ci-hd"><div class="ci-acc" style="background:#185FA5"></div><div class="ci-hdc"><div class="ci-name">③ 안전 및 재고관리 이행 &nbsp;<span style="font-size:11px;background:#FEE4E2;color:#912018;padding:1px 8px;border-radius:4px;font-weight:600">미흡 시 전환 보류</span></div><div class="ci-def">안전수칙과 재고관리 기준을 CL 부재 시에도 일관되게 이행하고, 이슈 발생 시 원인을 파악하여 보고한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">기준 자율 이행 및 원인 보고</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">이슈 발생 시 사실만 공유하고 원인 파악을 CL에게 의존하거나, 기준 이행이 불일관함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">CL 부재 시에도 오퍼레이션을 일관되게 수행하고 이슈 발생 시 원인과 함께 보고함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">반복 이슈를 패턴으로 인식하고 근본 원인에 대한 개선 의견을 CL에게 선제적으로 제시함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g1d" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g1d" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g1d" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+</div>
+
+<!-- 역량군 2 -->
+<div class="csec">
+  <div class="csec-hd" style="background:#EEF8EC"><div class="csec-icon" style="background:#3B6D11;color:#fff">👥</div><div class="csec-name" style="color:#27500A">역량군 2 · 크루 리딩</div><div class="csec-desc">크루와 가장 가까운 위치에서 실행력을 확보하는 역량 (2개 항목)</div></div>
+  <div class="ci">
+    <div class="ci-hd"><div class="ci-acc" style="background:#3B6D11"></div><div class="ci-hdc"><div class="ci-name">④ 크루 생산성 관리 및 피드백</div><div class="ci-def">크루의 숙련도와 태도를 파악하고 즉각적인 피드백을 제공하며, 관찰 근거를 CL에게 정확히 보고한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">생산성 저하 크루 직접 피드백</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">생산성 이슈를 인지해도 CL 지시를 기다리거나 상황을 묵인함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">생산성 저하 크루에게 직접 피드백하고 개선 과정을 CL에게 공유함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">관찰 기간의 구체적 근거를 정리하여 CL의 갱신 평가 결정을 구조적으로 지원함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g2a" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g2a" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g2a" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+  <div class="ci" style="border-radius:0 0 8px 8px">
+    <div class="ci-hd"><div class="ci-acc" style="background:#3B6D11"></div><div class="ci-hdc"><div class="ci-name">⑤ 현장 분위기 조성 및 기준 균형 유지</div><div class="ci-def">크루 간 갈등을 감지하고 1차 조율하며, 인간적 친밀감과 운영 기준 준수 사이의 균형을 유지한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">갈등 조기 감지 및 1차 조율</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">갈등을 인지해도 개입을 피하거나, 친밀감을 이유로 기준 적용을 눈치 봄</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">갈등을 조기 감지하여 1차 조율을 시도하고 결과를 CL에게 보고함. 기준과 친밀감의 균형을 유지함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">크루·관리자 간 소통 흐름을 주도적으로 이끌며 현장 협업 분위기를 형성하고 유지함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g2b" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g2b" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g2b" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+</div>
+
+<!-- 역량군 3 -->
+<div class="csec">
+  <div class="csec-hd" style="background:#FDF5E8"><div class="csec-icon" style="background:#BA7517;color:#fff">💬</div><div class="csec-name" style="color:#633806">역량군 3 · 소통 및 보고</div><div class="csec-desc">현장 정보를 정확하게 전달하고 위아래로 소통하는 역량 (2개 항목)</div></div>
+  <div class="ci">
+    <div class="ci-hd"><div class="ci-acc" style="background:#BA7517"></div><div class="ci-hdc"><div class="ci-name">⑥ 이슈 보고 정확성 및 독립 대응</div><div class="ci-def">사실과 판단을 구분하여 보고하며, CL 부재 시 기존 방향성 내에서 독립적으로 대응하고 사후 보고한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">CL 부재 시 독립 대응 및 사후 보고</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">CL과 연락이 닿을 때까지 대응을 보류하거나, 판단 없이 사실만 나열하여 보고함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">CL 부재 시 방향성 내에서 판단·대응하고 결과와 함께 사후 보고함. 사실과 판단을 구분하여 전달함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">핵심 이슈를 추려 보고하고, 판단 근거와 의견을 구조화하여 CL의 의사결정을 지원함</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g3a" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g3a" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g3a" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+  <div class="ci" style="border-radius:0 0 8px 8px">
+    <div class="ci-hd"><div class="ci-acc" style="background:#BA7517"></div><div class="ci-hdc"><div class="ci-name">⑦ CL 방향성 현장 내재화</div><div class="ci-def">CL 지시의 의도를 이해하고 크루에게 왜곡 없이 재전달하며, 불명확한 지시는 추측 실행 없이 확인 후 진행한다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">지시 의도 파악 및 크루 재전달</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">지시를 그대로 전달하거나 불명확한 지시를 추측으로 실행하여 현장 혼선을 야기함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">지시 의도를 파악하여 현장 언어로 재전달하고, 불명확한 지시는 확인 후 진행함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">방향성 변경 시 이유를 크루에게 맥락과 함께 설명하여 현장 납득도와 실행력을 높임</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g3b" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g3b" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g3b" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+</div>
+
+<!-- 역량군 4 -->
+<div class="csec">
+  <div class="csec-hd" style="background:#EEEDFE"><div class="csec-icon" style="background:#534AB7;color:#fff">💡</div><div class="csec-name" style="color:#3C3489">역량군 4 · 개선 제안 &nbsp;<span style="font-size:11px;font-weight:400;color:#534AB7">정규직 캡틴의 핵심 차별점</span></div><div class="csec-desc">흐름을 파악하고 개선을 제안하는 역량 (1개 항목)</div></div>
+  <div class="ci" style="border-radius:0 0 8px 8px">
+    <div class="ci-hd"><div class="ci-acc" style="background:#534AB7"></div><div class="ci-hdc"><div class="ci-name">⑧ 반복 이슈 인식 및 개선 의견 제시</div><div class="ci-def">반복 이슈를 단순 보고에 그치지 않고 패턴으로 인식하여 구조화된 개선 의견을 CL에게 제시한다. 결정권이 CL에게 있음을 인지하며 제안 범위를 지킨다</div></div></div>
+    <table class="etbl"><thead><tr><th style="width:22%">행동지표</th><th class="sth" style="background:var(--r-bg);color:var(--r-tx)">1 · 미흡</th><th class="sth" style="background:var(--y-bg);color:var(--y-tx)">2 · 충족</th><th class="sth" style="background:var(--g-bg);color:var(--g-tx)">3 · 우수</th><th>점수</th></tr></thead><tbody>
+    <tr><td class="ind">반복 이슈 패턴 인식 및 제안</td><td class="scel c1"><div class="schip">미흡</div><div class="sctx">반복 이슈가 있어도 발생 사실만 보고하거나, CL이 물어볼 때만 언급함</div></td><td class="scel c2"><div class="schip">충족</div><div class="sctx">반복 이슈를 인지하고 '문제 현상+발생 빈도'를 정리하여 스스로 CL에게 제안함</div></td><td class="scel c3"><div class="schip">우수</div><div class="sctx">발생 빈도·상황·영향을 구조화하여 제안하며, 제안이 현장 운영 방식이나 표준에 반영된 경험이 있음</div></td><td class="selcell"><div class="rrow"><div class="rbtn" data-g="g4a" data-v="1" onclick="pick(this)">1</div><div class="rbtn" data-g="g4a" data-v="2" onclick="pick(this)">2</div><div class="rbtn" data-g="g4a" data-v="3" onclick="pick(this)">3</div></div></td></tr>
+    </tbody></table>
+    <div class="cmtrow"><div class="cmtside">CL 관찰</div><div class="cmtinner"><div class="cmtblk"><div class="cmtlbl">✍️ CL 관찰 근거</div><textarea class="cmtta" placeholder="구체적인 관찰 사례를 기입해주세요"></textarea></div><div class="cmtblk"><div class="cmtlbl">📌 GM 보충 의견 <span style="font-weight:400;font-size:10px;color:#aaa">(선택)</span></div><textarea class="cmtta" placeholder="필요 시 기재"></textarea></div></div></div>
+  </div>
+</div>
+
+<!-- 종합 요약 -->
+<div class="sumsec">
+  <div class="sumtitle">📊 종합 평가 요약</div>
+  <div class="sgrid">
+    <div class="stile"><div class="slbl">역량군 1 · 운영실행</div><div class="sval" id="sg1">— <span>/ 12</span></div></div>
+    <div class="stile"><div class="slbl">역량군 2 · 크루리딩</div><div class="sval" id="sg2">— <span>/ 6</span></div></div>
+    <div class="stile"><div class="slbl">역량군 3 · 소통보고</div><div class="sval" id="sg3">— <span>/ 6</span></div></div>
+    <div class="stile"><div class="slbl">역량군 4 · 개선제안</div><div class="sval" id="sg4">— <span>/ 3</span></div></div>
+    <div class="stile tot"><div class="slbl">총점</div><div class="sval" id="stot">— <span>/ 27</span></div></div>
+    <div class="stile cnt"><div class="slbl">충족(2점) 이상 항목 수</div><div class="sval" id="sab2">— <span>/ 8개</span></div></div>
+  </div>
+  <div class="verd caut" id="verd"><div class="vi">⏳</div><div><strong>평가 진행 중</strong>모든 항목 평가 완료 후 전환 적합 여부가 자동 산출됩니다.</div></div>
+  <div class="gmsec">
+    <div class="gmhd">✍️ CL 종합 의견</div>
+    <div style="padding:12px 14px"><textarea class="gmta" style="width:100%;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:12px;resize:vertical;outline:none;min-height:72px;line-height:1.6;color:var(--gray-dark)" placeholder="이번 평가 기간의 전반적인 역량 수준, 성장 방향, 특이사항, 다음 주기 집중 개발 필요 영역 등을 기술해주세요."></textarea></div>
+  </div>
+  <div class="gmsec">
+    <div class="gmhd">✅ GM 최종 확인</div>
+    <div class="gmbody">
+      <div class="gmcol"><div class="gmlbl">전환 적합 여부 의견</div><div class="gmr-row"><label class="gmr"><input type="radio" name="gmv" value="pass"> <span>✅ 전환 적합 동의</span></label><label class="gmr"><input type="radio" name="gmv" value="watch"> <span>⏳ 추가 관찰 필요</span></label><label class="gmr"><input type="radio" name="gmv" value="hold"> <span>🚫 전환 보류</span></label></div></div>
+      <div class="gmcol"><div class="gmlbl">GM 의견</div><textarea class="gmta" placeholder="CL 평가 내용에 대한 검토 의견, 전환 결정 시 고려사항 등을 기재해주세요."></textarea></div>
+    </div>
+  </div>
+</div>
+
+<!-- 서명란 -->
+<div class="signrow">
+  <div class="signbox"><div class="signlbl">평가 대상자 확인</div><div class="signline">서명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+  <div class="signbox"><div class="signlbl">평가자 (CL)</div><div class="signline">서명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+  <div class="signbox"><div class="signlbl">최종 확인 (GM)</div><div class="signline">서명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+</div>
+
+</div>
+<script>
+const sc={};
+const groups={g1:['g1a','g1b','g1c','g1d'],g2:['g2a','g2b'],g3:['g3a','g3b'],g4:['g4a']};
+const maxes={g1:12,g2:6,g3:6,g4:3};
+function pick(btn){
+  const g=btn.dataset.g,v=parseInt(btn.dataset.v);
+  document.querySelectorAll('.rbtn[data-g="'+g+'"]').forEach(b=>b.classList.remove('s1','s2','s3'));
+  btn.classList.add('s'+v);sc[g]=v;calc();
+}
+function calc(){
+  let total=0,above2=0,allDone=true,safetyFail=false;
+  for(const[gk,items]of Object.entries(groups)){
+    let gs=0,ha=true;
+    for(const ik of items){if(sc[ik]===undefined){ha=false;allDone=false;continue;}gs+=sc[ik];if(sc[ik]>=2)above2++;if(ik==='g1d'&&sc[ik]===1)safetyFail=true;}
+    const el=document.getElementById('s'+gk);
+    if(el&&ha){el.innerHTML=gs+' <span>/ '+maxes[gk]+'</span>';total+=gs;}
+  }
+  const done=Object.keys(sc).length;
+  document.getElementById('stot').innerHTML=(done===8?total:'—')+' <span>/ 27</span>';
+  document.getElementById('sab2').innerHTML=(done===8?above2:'—')+' <span>/ 8개</span>';
+  const v=document.getElementById('verd');
+  if(!allDone){v.className='verd caut';v.innerHTML='<div class="vi">⏳</div><div><strong>평가 진행 중 ('+done+'/8 완료)</strong>모든 항목 평가 완료 후 전환 적합 여부가 자동 산출됩니다.</div>';return;}
+  const miss=8-above2;
+  if(safetyFail){v.className='verd hold';v.innerHTML='<div class="vi">🚫</div><div><strong>전환 보류 — 안전·재고관리 항목 미흡</strong>③ 항목에서 미흡(1점)이 확인되어 TO 발생 시에도 전환을 보류합니다. 총점 '+total+'점, 충족 이상 '+above2+'개.</div>';}
+  else if(above2>=6&&miss<=2){v.className='verd pass';v.innerHTML='<div class="vi">✅</div><div><strong>전환 적합 — TO 발생 시 정규직 전환 검토 가능</strong>충족(2점) 이상 '+above2+'개, 미흡 '+miss+'개로 전환 기준을 충족합니다. 총점 '+total+'점 / 27점. GM 최종 확인을 진행하세요.</div>';}
+  else{v.className='verd hold';v.innerHTML='<div class="vi">📋</div><div><strong>전환 보류 — 역량 보완 필요</strong>충족(2점) 이상 '+above2+'개 (기준 6개), 미흡 '+miss+'개 (기준 2개 이하). 총점 '+total+'점 / 27점. 미흡 항목 집중 개발이 필요합니다.</div>';}
+}
+</script>
+</body>
+</html>

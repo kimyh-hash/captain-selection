@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정규직 캡틴 선발 절차 고도화 — 조직파트너팀 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0C1E35;--navy-mid:#1A3352;--blue:#185FA5;--blue-light:#E6F1FB;--blue-pale:#F0F7FF;
+  --green:#3B6D11;--green-light:#EAF3DE;
+  --amber:#BA7517;--amber-light:#FAEEDA;
+  --purple:#534AB7;--purple-light:#EEEDFE;
+  --red-mid:#A32D2D;--red-light:#FEF3F2;--red-bd:#FDA29B;
+  --gray-dark:#1E1E1C;--gray-mid:#5F5E5A;--gray-light:#F1EFE8;
+  --border:#E0DED8;--bg:#F8F7F4;--white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--gray-dark);font-size:14px;line-height:1.7}
+
+/* ── 사이드바 ── */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:230px;background:var(--navy);overflow-y:auto;z-index:100;display:flex;flex-direction:column}
+.sb-logo{padding:1.5rem 1.25rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-org{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.08em;margin-bottom:4px}
+.sb-title{font-size:13px;font-weight:500;color:#fff;line-height:1.4}
+.sb-year{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px}
+.sb-nav{padding:1rem 0;flex:1}
+.sb-part{padding:.4rem 1.25rem .2rem;font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:.75rem}
+.sb-item{display:flex;align-items:center;gap:8px;padding:.5rem 1.25rem;text-decoration:none;font-size:12px;color:rgba(255,255,255,.55);transition:all .15s;border-left:2px solid transparent}
+.sb-item:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sb-item.active{color:#fff;background:rgba(255,255,255,.1);border-left-color:#5B9FD4}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-footer{padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.25)}
+
+/* ── 메인 ── */
+.main{margin-left:230px;min-height:100vh}
+
+/* ── 히어로 ── */
+.hero{background:var(--navy);padding:4.5rem 4rem 3.5rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;right:0;bottom:0;width:40%;background:linear-gradient(135deg,transparent 40%,rgba(24,95,165,.15))}
+.hero-tag{font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:.75rem}
+.hero-title{font-family:'Noto Serif KR',serif;font-size:2.5rem;font-weight:600;color:#fff;line-height:1.25;margin-bottom:.75rem}
+.hero-title span{color:#5B9FD4}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:2rem}
+.hero-chips{display:flex;gap:8px;flex-wrap:wrap}
+.hero-chip{font-size:11px;padding:3px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+
+/* ── 파트 구분 ── */
+.part-banner{background:var(--navy-mid);padding:.9rem 4rem;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.part-num{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.1em}
+.part-title{font-size:15px;font-weight:500;color:#fff}
+.part-divider{flex:1;height:1px;background:rgba(255,255,255,.08);margin-left:8px}
+
+/* ── 섹션 ── */
+.section{padding:3rem 4rem;border-bottom:1px solid var(--border);background:var(--white)}
+.section:nth-child(even){background:#FCFBF9}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--blue);text-transform:uppercase;margin-bottom:.5rem}
+.sec-title{font-size:1.5rem;font-weight:700;color:var(--gray-dark);margin-bottom:.5rem;display:flex;align-items:center;gap:10px}
+.sec-accent{width:4px;height:26px;border-radius:2px;flex-shrink:0}
+.sec-desc{font-size:13px;color:var(--gray-mid);margin-bottom:2rem;max-width:600px}
+
+/* ── 공통 컴포넌트 ── */
+.info-box{background:var(--blue-pale);border:1px solid #C5DCEF;border-left:4px solid var(--blue);border-radius:8px;padding:12px 16px;margin-bottom:1.5rem;font-size:13px;color:#1a3a5c;line-height:1.75}
+.info-box strong{color:var(--navy);font-weight:600}
+.warn-box{background:var(--amber-light);border:1px solid #E9B96A;border-left:4px solid var(--amber);border-radius:8px;padding:12px 16px;margin-bottom:1.5rem;font-size:13px;color:var(--amber);line-height:1.75}
+.warn-box strong{font-weight:600}
+
+/* ── 표 ── */
+.tbl-wrap{overflow-x:auto;margin-bottom:1.5rem}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead tr{background:var(--navy);color:#fff}
+thead th{padding:9px 13px;text-align:left;font-weight:500;font-size:11px;letter-spacing:.03em}
+tbody td{padding:9px 13px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F8F8F6}
+td.td-head{font-weight:500;color:var(--gray-dark);background:#FAFAF9;white-space:nowrap}
+td.td-blue{color:var(--blue)}
+td.td-green{color:var(--green)}
+td.td-amber{color:var(--amber)}
+td.td-red{color:var(--red-mid)}
+.tbl-cap{font-size:11px;color:var(--gray-mid);margin-top:6px;margin-bottom:1.25rem}
+
+/* ── 카드 그리드 ── */
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
+.card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:1.5rem}
+.card{border-radius:var(--radius-md,8px);padding:14px 16px;border:1px solid var(--border);background:var(--white)}
+.card-num{font-size:22px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.card-title{font-size:13px;font-weight:700;color:var(--gray-dark);margin-bottom:4px}
+.card-desc{font-size:12px;color:var(--gray-mid);line-height:1.6}
+
+/* ── 흐름도 ── */
+.flow{display:flex;flex-direction:column;gap:0;margin-bottom:1.5rem;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.flow-step{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--border)}
+.flow-step:last-child{border-bottom:none}
+.flow-left{padding:12px 16px;background:#FAFAF9;border-right:1px solid var(--border);display:flex;align-items:flex-start;gap:8px}
+.flow-arrow{font-size:13px;color:var(--blue);margin-top:2px;flex-shrink:0}
+.flow-label{font-size:13px;font-weight:700;color:var(--gray-dark)}
+.flow-sub{font-size:11px;color:var(--gray-mid);margin-top:2px}
+.flow-right{padding:12px 16px;font-size:12px;color:var(--gray-dark);line-height:1.7}
+.flow-right ul{list-style:none;display:flex;flex-direction:column;gap:3px}
+.flow-right ul li{padding-left:14px;position:relative}
+.flow-right ul li::before{content:'·';position:absolute;left:4px;color:var(--gray-mid)}
+.flow-highlight{background:var(--blue-pale)}
+.flow-highlight .flow-left{background:#DCE9F6}
+
+/* ── 요건 카드 ── */
+.req-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem}
+.req-card{border-radius:8px;padding:11px 12px;border:1px solid var(--border);background:var(--white);text-align:center}
+.req-card.req-special{border:1.5px solid var(--blue);background:var(--blue-pale)}
+.req-label{font-size:10px;color:var(--gray-mid);font-weight:600;letter-spacing:.04em;margin-bottom:5px}
+.req-val{font-size:13px;font-weight:700;color:var(--gray-dark);line-height:1.4}
+.req-special .req-label{color:var(--blue)}
+.req-special .req-val{color:var(--navy)}
+
+/* ── 역량 항목 ── */
+.comp-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px;background:var(--white)}
+.comp-head{display:grid;grid-template-columns:4px 1fr;background:#FAFAF9;border-bottom:1px solid var(--border)}
+.comp-acc{width:4px}
+.comp-head-c{padding:9px 13px}
+.comp-name{font-size:13px;font-weight:700;color:var(--gray-dark)}
+.comp-def{font-size:12px;color:var(--gray-mid);margin-top:2px}
+.comp-body{padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.comp-block{padding:0 10px}
+.comp-block:first-child{border-right:1px solid var(--border);padding-left:0}
+.comp-block-label{font-size:10px;font-weight:700;margin-bottom:5px;letter-spacing:.04em}
+.bl-base{color:var(--blue)}
+.bl-aim{color:var(--purple)}
+.comp-block ul{list-style:none;display:flex;flex-direction:column;gap:3px}
+.comp-block ul li{font-size:12px;color:var(--gray-dark);padding-left:14px;position:relative;line-height:1.6}
+.comp-block ul li::before{content:'→';position:absolute;left:0;color:var(--gray-mid);font-size:11px;top:3px}
+
+/* ── 사례 카드 ── */
+.case-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.5rem;background:var(--white)}
+.case-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border)}
+.case-group{font-size:11px;font-weight:700;color:var(--gray-mid);margin-bottom:3px;letter-spacing:.04em}
+.case-title{font-size:15px;font-weight:700;color:var(--gray-dark)}
+.case-sit{padding:.85rem 1.25rem;background:#FAFAF9;border-bottom:1px solid var(--border)}
+.case-sit-label{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.06em;margin-bottom:4px}
+.case-sit-text{font-size:12px;color:var(--gray-dark);line-height:1.7}
+.case-compare{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.case-col{padding:1rem 1.25rem;border-right:1px solid var(--border)}
+.case-col:last-child{border-right:none}
+.case-col-label{font-size:11px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.cc-con{color:var(--gray-mid)}
+.cc-reg{color:var(--blue)}
+.range-badge{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:6px}
+.rb-con{background:var(--gray-light);color:var(--gray-mid)}
+.rb-reg{background:var(--blue-light);color:var(--navy)}
+.case-col-text{font-size:12px;color:var(--gray-dark);line-height:1.7;margin-bottom:6px}
+.case-col-note{font-size:11px;color:var(--gray-mid);line-height:1.6;padding-top:7px;border-top:1px dashed var(--border)}
+.case-insight{padding:.85rem 1.25rem;background:var(--purple-light)}
+.case-insight-label{font-size:10px;font-weight:700;color:var(--purple);letter-spacing:.06em;margin-bottom:4px}
+.case-insight-text{font-size:12px;color:#2a2560;line-height:1.7}
+.case-insight-text strong{font-weight:700}
+
+/* ── 체크리스트 표 ── */
+.cl-sec{margin-bottom:1.5rem}
+.cl-head{display:flex;align-items:center;gap:8px;padding:.6rem .9rem;border-radius:6px 6px 0 0;border:1px solid var(--border);border-bottom:none}
+.cl-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.cl-name{font-size:13px;font-weight:700}
+.cl-badge{font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;margin-left:auto;background:var(--red-light);color:var(--red-mid)}
+
+/* ── 타임라인 ── */
+.tl-phase{margin-bottom:1.75rem}
+.tl-phase-title{font-size:14px;font-weight:700;color:var(--gray-dark);padding:.6rem .9rem;background:var(--navy);color:#fff;border-radius:6px;margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.tl-phase-sub{font-size:11px;color:rgba(255,255,255,.5);font-weight:400}
+.tl-note{background:var(--amber-light);border:1px solid #E9B96A;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 13px;font-size:12px;color:var(--amber);line-height:1.7;margin-top:.75rem}
+.tl-note strong{font-weight:600}
+
+/* ── 원칙 박스 ── */
+.principle-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.principle-item{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white)}
+.principle-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.principle-text{font-size:13px;color:var(--gray-dark);line-height:1.65}
+.principle-text strong{font-weight:500;color:var(--navy)}
+
+/* ── 척도 ── */
+.scale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.5rem}
+.scale-card{border-radius:8px;padding:12px 14px;border:1px solid}
+.sc1{background:var(--red-light);border-color:var(--red-bd)}
+.sc2{background:var(--amber-light);border-color:#FEC84B}
+.sc3{background:var(--green-light);border-color:#6CE9A6}
+.sc-num{font-size:20px;font-weight:700;margin-bottom:2px}
+.sc1 .sc-num{color:var(--red-mid)}
+.sc2 .sc-num{color:var(--amber)}
+.sc3 .sc-num{color:var(--green)}
+.sc-name{font-size:13px;font-weight:700;margin-bottom:4px}
+.sc1 .sc-name{color:var(--red-mid)}
+.sc2 .sc-name{color:var(--amber)}
+.sc3 .sc-name{color:var(--green)}
+.sc-desc{font-size:12px;color:var(--gray-mid);line-height:1.55}
+
+/* ── 파일 링크 ── */
+.file-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem}
+.file-link{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;border:1px solid var(--border);background:var(--white);color:var(--blue);transition:all .15s}
+.file-link:hover{background:var(--blue-light);border-color:var(--blue)}
+
+/* ── 반응형 ── */
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0}.hero,.section,.part-banner{padding-left:1.5rem;padding-right:1.5rem}.hero-title{font-size:1.8rem}.card-grid-3,.req-grid{grid-template-columns:1fr 1fr}.case-compare{grid-template-columns:1fr}.comp-body{grid-template-columns:1fr}}
+@media print{.sidebar{display:none}.main{margin-left:0}.section{break-inside:avoid}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+
+/* ── 스크롤 페이드 ── */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- 사이드바 -->
+<nav class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-org">조직파트너팀</div>
+    <div class="sb-title">정규직 캡틴<br>선발 절차 고도화</div>
+    <div class="sb-year">2026</div>
+  </div>
+  <div class="sb-nav">
+    <div class="sb-part">Part 1 · 추진 개요</div>
+    <a href="#s-bg" class="sb-item"><span class="sb-dot" style="background:#5B9FD4"></span>추진 배경</a>
+    <a href="#s-concept" class="sb-item"><span class="sb-dot" style="background:#5B9FD4"></span>변경 컨셉</a>
+    <a href="#s-method" class="sb-item"><span class="sb-dot" style="background:#5B9FD4"></span>변경 방법</a>
+    <div class="sb-part">Part 2 · 롤모델</div>
+    <a href="#s-rm-method" class="sb-item"><span class="sb-dot" style="background:#6ABF8A"></span>작성 방법론</a>
+    <a href="#s-rm-content" class="sb-item"><span class="sb-dot" style="background:#6ABF8A"></span>롤모델 내용</a>
+    <a href="#s-rm-cases" class="sb-item"><span class="sb-dot" style="background:#6ABF8A"></span>활용 사례</a>
+    <div class="sb-part">Part 3 · 평가 도구</div>
+    <a href="#s-process" class="sb-item"><span class="sb-dot" style="background:#E8A838"></span>평가 프로세스</a>
+    <a href="#s-sheet" class="sb-item"><span class="sb-dot" style="background:#E8A838"></span>평가서</a>
+    <a href="#s-checklist" class="sb-item"><span class="sb-dot" style="background:#E8A838"></span>부적합 체크리스트</a>
+    <div class="sb-part">Part 4 · 운영 계획</div>
+    <a href="#s-plan" class="sb-item"><span class="sb-dot" style="background:#9D8FE0"></span>26~27년 운영 계획</a>
+  </div>
+  <div class="sb-footer">B마트운영팀 내부 자료</div>
+</nav>
+
+<!-- 메인 -->
+<main class="main">
+
+<!-- 히어로 -->
+<div class="hero">
+  <div class="hero-tag">조직파트너팀 · 2026</div>
+  <div class="hero-title">정규직 캡틴<br><span>선발 절차 고도화</span></div>
+  <div class="hero-sub">관리자 정규직 전환 절차 고도화 · PPC 인력정책 개편</div>
+  <div class="hero-chips">
+    <span class="hero-chip">롤모델 정의</span>
+    <span class="hero-chip">누적 평가 체계</span>
+    <span class="hero-chip">부적합 체크리스트</span>
+    <span class="hero-chip">캘리브레이션</span>
+    <span class="hero-chip">Phase 1→3 단계 전환</span>
+  </div>
+</div>
+
+<!-- Part 1 -->
+<div class="part-banner" id="part1">
+  <span class="part-num">PART 01</span>
+  <span class="part-title">정규직 캡틴 선발 절차 고도화 추진</span>
+  <div class="part-divider"></div>
+</div>
+
+<!-- 1-1 추진 배경 -->
+<div class="section" id="s-bg">
+  <div class="sec-eyebrow">1-1</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--blue)"></div>추진 배경</div>
+
+  <div class="info-box fade-in">
+    PPC 운영 안정성 제고 및 관리 역량 강화를 위해 현장 관리자 중 정규직 인력 비중 확대(1 PPC 1 정규직 캡틴 배치) 의사결정 완료. 단, 양질의 정규직 캡틴 확보를 위해 <strong>전환 절차 고도화가 선행 조건으로 제시</strong>됨.
+  </div>
+
+  <div class="fade-in">
+    <div class="sec-desc">의사결정 과정에서 확인된 핵심 요구사항</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:60px">#</th><th>의사결정권자 요구사항</th></tr></thead>
+        <tbody>
+          <tr><td class="td-head">①</td><td>'좋은 캡틴'의 명확한 롤모델을 Best Practice 사례로 정의</td></tr>
+          <tr><td class="td-head">②</td><td>직책별 전환 기준 및 평가의 정교화</td></tr>
+          <tr><td class="td-head">③</td><td>정규직 전환 전 기간제 근무기간 충분히 확보</td></tr>
+          <tr><td class="td-head">④</td><td>부적합 체크리스트 운영 확인</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <div class="sec-desc" style="margin-top:1.5rem">현행 선발 방식의 한계</div>
+    <div class="card-grid-2">
+      <div class="card">
+        <div class="card-title">SOP 테스트의 한계</div>
+        <div class="card-desc">SOP 테스트 점수 우수자가 관리 역량이 뛰어나다고 보기 어려움. 시험 대비형 인재가 선발되는 구조로, 실제 현장에서 지속적으로 일을 잘하는 사람을 가려내는 도구로서의 타당성 낮음.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">단발 면접의 한계</div>
+        <div class="card-desc">단발 평가는 순간을 포착할 뿐 역량의 지속성을 검증하지 못함. 면접 당일의 인상이 아닌, 실제 현장에서 반복적으로 증명된 역량을 데이터로 확인하는 구조 필요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fade-in">
+    <div class="sec-desc" style="margin-top:1.5rem">동종업계 비교</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:160px">구분</th><th>우아한청년들</th><th>컬리</th></tr></thead>
+        <tbody>
+          <tr><td class="td-head">기간제 근무방식</td><td>12~24개월<br><span style="font-size:11px;color:var(--gray-mid)">(12개월 이상 근무자 정규직 전환 가능)</span></td><td>24개월<br><span style="font-size:11px;color:var(--gray-mid)">(정규직 조기 전환 절차 없음)</span></td></tr>
+          <tr><td class="td-head">기간제 평가방식</td><td>년 1회 정기평가 (성과/역량평가)<br>· 성과평가 : 성과급 영향<br>· 역량평가 : 보상 영향 없음</td><td>6개월 기준 평가 + 재계약 심사<br>· 업적(정량) 70 + 역량 30<br>· 6개월/6개월/1년 (총 3차, 탈락 시 재계약 없음)</td></tr>
+          <tr><td class="td-head">기간제 평가 활용</td><td>계약기간 영향 없음<br>정규직 전환 시 참고자료 활용</td><td>각 평가 시점마다 결과에 따라 계약종료 or 재계약 진행</td></tr>
+          <tr><td class="td-head">정규직 전환방식</td><td>SOP 테스트 → 면접 → 최종 평가 통과 시 전환</td><td>별도 심사 없이 정규직 전환</td></tr>
+          <tr><td class="td-head">직책 발령 기준</td><td>별도 기준 및 절차 없음<br>조직 상황에 따라 상위 조직장 판단</td><td>① 부서장 추천서 ② 최소 요건 확인 ③ 다면평가 ④ 그룹장 승인 + 본부장 인터뷰<br>직책해제 별도 기준 있음</td></tr>
+          <tr><td class="td-head">캡틴 역할 부여</td><td>기간제 1년차부터 관리자(캡틴) 역할 부여</td><td>기간제 1년차는 일반 사원, 2년차 이상부터 캡틴 역할(조장) 가능<br>조장은 의무 아님, 정규직 전환 후에도 일반작업자 근무 가능</td></tr>
+          <tr><td class="td-head">임금 (기간제 1호봉)</td><td>10,885원/hr</td><td>10,030원/hr (최저시급, 크루 유사 직무)</td></tr>
+          <tr><td class="td-head">임금 (정규직 초임)</td><td>11,603원/hr (인상률 3.6%)</td><td>11,060원/hr (인상률 6.4%, 반장 역할 가능, 수당 20만/월)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap">타사 대비 당사의 정규직 전환 기준은 까다로운 편이나, 직책 발령은 상위 조직장 판단에 전적으로 의존하는 구조. 캡틴부터 의무적으로 현장 관리자 역할을 수행하는 당사 구조를 감안할 때, 선발 기준 정교화는 운영 신뢰성 및 구성원 공정성 모두에 영향.</div>
+  </div>
+</div>
+
+<!-- 1-2 변경 컨셉 -->
+<div class="section" id="s-concept">
+  <div class="sec-eyebrow">1-2</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--blue)"></div>변경 컨셉</div>
+  <div class="sec-desc">한 번의 시험으로 검증하는 '순간 포착형' 선발에서 탈피하여, 실제 현장에서 증명된 역량과 성과를 데이터로 확인하는 '누적 검증형' 체계로의 전환</div>
+
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:140px">구분</th><th>현행</th><th>개편 후</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head">선발 방식</td><td>SOP 테스트 + 단발 면접</td><td class="td-blue">정기 누적 평가 중심</td></tr>
+        <tr><td class="td-head">평가 주체</td><td>운영실장 단독</td><td class="td-blue">GM / CL (주) + 다면 피드백 (보조)</td></tr>
+        <tr><td class="td-head">평가 주기</td><td>연 2회 (2월·8월)</td><td class="td-blue">3개월 1회 (분기별)</td></tr>
+        <tr><td class="td-head">기준 정의</td><td>암묵적 기준</td><td class="td-blue">정규직 캡틴 롤모델 + 행동지표 명문화</td></tr>
+        <tr><td class="td-head">결격 관리</td><td>징계·근태 확인 수준</td><td class="td-blue">부적합 체크리스트 수시 운영</td></tr>
+        <tr><td class="td-head">전환 결정</td><td>SOP·면접 결과 기반</td><td class="td-blue">누적 평가 + 캘리브레이션 보정 후 TO 내 확정</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-desc fade-in" style="margin-top:1.5rem">선발 구조 흐름</div>
+  <div class="flow fade-in">
+    <div class="flow-step">
+      <div class="flow-left"><span class="flow-arrow">↓</span><div><div class="flow-label">캡틴 입사</div></div></div>
+      <div class="flow-right">기간제 캡틴으로 입사</div>
+    </div>
+    <div class="flow-step flow-highlight">
+      <div class="flow-left"><span class="flow-arrow">↓</span><div><div class="flow-label">정기 누적 평가</div><div class="flow-sub">3개월 주기</div></div></div>
+      <div class="flow-right"><ul>
+        <li>평가 시행 : 6월 / 9월 / 12월 / 3월</li>
+        <li>평가 주체 : GM / CL</li>
+        <li>평가 도구 : 행동 기반 역량 평가서</li>
+        <li>결격 관리 : 부적합 체크리스트 수시 운영</li>
+      </ul></div>
+    </div>
+    <div class="flow-step flow-highlight">
+      <div class="flow-left"><span class="flow-arrow">↓</span><div><div class="flow-label">캘리브레이션</div><div class="flow-sub">실(室) 단위</div></div></div>
+      <div class="flow-right"><ul>
+        <li>센터별 GM/CL 평가 기준 편차 보정</li>
+        <li>평가 직후 분기별 정례 운영</li>
+        <li>주체 : 운영실 (B마트운영팀장 주관)</li>
+      </ul></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left"><span class="flow-arrow">↓</span><div><div class="flow-label">전환 자격 요건 확인</div></div></div>
+      <div class="flow-right"><ul>
+        <li>B마트 근무경력 2년 이상</li>
+        <li>누적 평가 4회차 이상</li>
+        <li>전 항목 충족(2점) 이상</li>
+        <li>부적합 체크리스트 이상 없음</li>
+      </ul></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left"><span class="flow-arrow">↓</span><div><div class="flow-label">정규직 전환 선발</div></div></div>
+      <div class="flow-right">자격 요건 충족 인원 중 TO 내 확정</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-left"><span class="flow-arrow">↺</span><div><div class="flow-label">미선발자</div></div></div>
+      <div class="flow-right">피드백 제공 → 다음 사이클 재도전</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1-3 변경 방법 -->
+<div class="section" id="s-method">
+  <div class="sec-eyebrow">1-3</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--blue)"></div>변경 방법</div>
+
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:130px">구분</th><th>Phase 1 · 도입·과도기</th><th>Phase 2 · 실행·전환기</th><th>Phase 3 · 정착·상시화</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head">기간</td><td>26년 하반기</td><td>26년 말</td><td>27년 하반기 ~</td></tr>
+        <tr><td class="td-head">컨셉</td><td>기존 방식 + 결격 사유 검증 병행</td><td>누적 평가 검증 체계 고도화</td><td>데이터 기반 상시 선발</td></tr>
+        <tr><td class="td-head">SOP 시험</td><td>유지 (필수)</td><td>폐지</td><td>폐지</td></tr>
+        <tr><td class="td-head">면접</td><td>유지 (필수)</td><td>유지 (역량·데이터 검증)</td><td>원칙적 폐지 (리더십 면담 대체)</td></tr>
+        <tr><td class="td-head">선발 시점</td><td>26년 9월 (1회)</td><td>26년 말 (1회)</td><td>3개월 주기 1회</td></tr>
+        <tr><td class="td-head">활용 TO</td><td>26명</td><td>20명</td><td>퇴사자 대체 TO</td></tr>
+        <tr><td class="td-head">기대 효과</td><td>제도 변화 연착륙</td><td>평가 데이터 신뢰도 확보</td><td>성과 중심 자율 운영 체계</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box fade-in">
+    <strong>Phase 2 고려사항.</strong> 26년 평가 시행 예정 시점이 6월·9월·12월로, Phase 2 실행 시점(26년 말) 기준 최대 3회 평가 데이터만 확보 가능. 전환 자격 요건(4회차 이상)을 충족하는 대상자가 제한적일 수 있어, 초기에는 요건 기준의 탄력적 운영 또는 선발 풀 규모를 감안한 TO 이관 방안을 HR실·운영실 간 사전 협의 필요.
+  </div>
+
+  <div class="sec-desc fade-in" style="margin-top:1.5rem">기반 정의 작업 순서 (Step 1 선행 필수)</div>
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:120px">단계</th><th>주요 내용</th><th style="width:200px">산출물</th><th style="width:220px">고려사항</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-head">1-1. R&R 구분</td>
+          <td>· 정규직/기간제 캡틴 역할 및 책임(R&R) 차이 정의<br>· 업무 범위, 권한 및 그에 따른 역량 설정</td>
+          <td>정규직 캡틴 롤모델<br>(역량 정의 + 행동 사례)</td>
+          <td>F레벨 역량 정의서와의 정합성 체크 필요</td>
+        </tr>
+        <tr>
+          <td class="td-head">1-2. 역량 기준</td>
+          <td>· 역량별 행동지표(Behavior Indicator) 구체화<br>· 평가 척도(3점) 및 평가 항목 수 결정<br>· 센터 유형별 기준 차등 여부 확정</td>
+          <td>기간제 캡틴 역량 평가서</td>
+          <td>GM/CL 외 다면 피드백 반영 여부 검토. 캘리브레이션 운영 가이드 병행 필요</td>
+        </tr>
+        <tr>
+          <td class="td-head">1-3. 부적합 리스트</td>
+          <td>· 체크리스트 판정 주체(GM), 시점(전환 전), 기록 방식 합의<br>· 재입사자·조사 중 사안 처리 기준<br>· 탈락 후 재도전 조건 설정</td>
+          <td>정규직 전환<br>부적합 체크리스트</td>
+          <td>누적 평가 횟수와 무관하게 해당 사안 발생 시 즉시 전환 대상 제외 기준 명확화 필요</td>
+        </tr>
+        <tr>
+          <td class="td-head">1-4. 결과 활용</td>
+          <td>· 평가 데이터 활용 범위 (전환·배치·교육 등)<br>· 결과 공개 범위 및 이의 제기 프로세스 구축<br>· 데이터 보관 및 관리 주체 설정</td>
+          <td>결과 활용 기준 문서</td>
+          <td>단순 평균 vs 가중 평균(최근 역량에 가중치) 방식 결정 필요</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Part 2 -->
+<div class="part-banner" id="part2">
+  <span class="part-num">PART 02</span>
+  <span class="part-title">정규직 캡틴 롤모델</span>
+  <div class="part-divider"></div>
+</div>
+
+<!-- 2-1 방법론 -->
+<div class="section" id="s-rm-method">
+  <div class="sec-eyebrow">2-1</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--green)"></div>롤모델 작성 순서와 방법론</div>
+
+  <div class="file-links fade-in">
+    <a href="정규직_캡틴_롤모델.html" class="file-link">📄 정규직 캡틴 롤모델 (HTML)</a>
+    <a href="정규직_캡틴_롤모델.docx" class="file-link">📝 정규직 캡틴 롤모델 (DOCX)</a>
+  </div>
+
+  <div class="sec-desc">두 가지 문서를 교차 검토하여 도출</div>
+  <div class="card-grid-2 fade-in">
+    <div class="card">
+      <div class="card-title">B마트운영팀 R&R 문서</div>
+      <div class="card-desc">캡틴 직책의 역할 정의, 주요 책임, 핵심 역량 항목 추출. 기간제·정규직·센터리더(CL) 세 역할의 범위 차이 파악.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">F레벨 역량 정의서 (To-be Ver.2)</div>
+      <div class="card-desc">정규직 캡틴이 F2(필수 충족) 수준을 기본으로 갖추고 F3(지향)을 목표로 해야 함을 확인. 역량 항목별 행동지표가 F레벨 기준과 정합되도록 조정.</div>
+    </div>
+  </div>
+
+  <div class="sec-desc fade-in" style="margin-top:1.5rem">핵심 설계 원칙</div>
+  <div class="principle-grid fade-in">
+    <div class="principle-item">
+      <div class="principle-num">①</div>
+      <div class="principle-text"><strong>범위의 차이</strong> : 기간제 캡틴과 정규직 캡틴의 차이는 잘함/못함이 아니라 역할 범위의 차이. 기간제는 지시된 운영을 누락 없이 수행하는 실행자, 정규직은 운영 전체 흐름을 이해하고 CL 부재 시에도 독립 대응하며 개선 의견을 제시할 수 있는 인재.</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">②</div>
+      <div class="principle-text"><strong>상위 역할과의 경계</strong> : 정규직 캡틴은 실행 중심성을 유지하는 역할. 운영 계획 수립이나 최종 의사결정은 CL의 권한으로 명확히 구분.</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">③</div>
+      <div class="principle-text"><strong>수준 이분화</strong> : 각 역량 항목은 기본 충족(전환 심사 기준선)과 지향(성장 방향) 수준으로 구분. 기본 충족이 전부 갖춰져야 정규직 적합으로 판단.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2-2 롤모델 내용 -->
+<div class="section" id="s-rm-content">
+  <div class="sec-eyebrow">2-2</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--green)"></div>롤모델 내용 요약</div>
+
+  <div class="sec-desc">역할 정의 — 3단 비교</div>
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:120px"></th><th>기간제 캡틴</th><th style="background:#1A3352">정규직 캡틴</th><th>센터리더(CL)</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head">핵심 역할</td><td>지시 → 실행</td><td class="td-blue">이해 + 독립실행 + 제안</td><td class="td-green">계획 + 책임 + 결정</td></tr>
+        <tr><td class="td-head">운영 기준</td><td>지시에 따라 수행</td><td class="td-blue">SOP 숙지, CL 부재 시 독립 수행 → 기준 이유 이해 및 유연 적용</td><td class="td-green">기준 직접 수립·수정</td></tr>
+        <tr><td class="td-head">이슈 대응</td><td>발생 사실 즉시 공유</td><td class="td-blue">CL 부재 시 자체 판단·사후 보고 → 원인 분석 + 구조화 보고</td><td class="td-green">대응 계획 수립 및 유관부서 소통</td></tr>
+        <tr><td class="td-head">크루 관리</td><td>업무 배분 및 기초 지도</td><td class="td-blue">생산성 파악·즉각 피드백 → 관찰 근거 정리, 개선 제안</td><td class="td-green">갱신 평가 최종 결정, 육성 계획 수립</td></tr>
+        <tr><td class="td-head">문제 인식</td><td>발생 이슈 보고</td><td class="td-blue">반복 이슈 인지·명시 보고 → 패턴 분석·선제 공유</td><td class="td-green">근본 원인 파악, 개선 계획 수립</td></tr>
+        <tr><td class="td-head">개선 활동</td><td>불편사항 단순 공유</td><td class="td-blue">현상+빈도 정리 제안 → 구조화 제안·표준화 기여</td><td class="td-green">개선 계획 수립 및 실행 관리</td></tr>
+        <tr><td class="td-head">의사결정</td><td>정해진 기준 내 즉시 판단</td><td class="td-blue">CL 부재 시 기존 방향성 내 자체 판단 → 보고 타이밍 자율 결정</td><td class="td-green">운영 전반 최종 결정권</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-desc fade-in" style="margin-top:1.5rem">역량군 구성 (전체 8개 항목 / 4개 역량군)</div>
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:140px">역량군</th><th>역량 항목</th><th style="width:180px">핵심 내용</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head" rowspan="3">운영실행</td><td>① 운영 기준 숙지 및 독립 적용</td><td rowspan="3" style="color:var(--gray-mid);font-size:12px">SOP 독립 수행, 시간대별 흐름 관리, 안전·재고 이행</td></tr>
+        <tr><td>② 시간대별 운영 흐름 관리</td></tr>
+        <tr><td>③ 안전 및 재고관리 이행 <span style="font-size:10px;color:var(--red-mid);background:var(--red-light);padding:1px 6px;border-radius:4px">미흡 시 전환 보류</span></td></tr>
+        <tr><td class="td-head" rowspan="2">크루 리딩</td><td>④ 크루 생산성 관리 및 피드백</td><td rowspan="2" style="color:var(--gray-mid);font-size:12px">생산성 관리·피드백, 현장 분위기 조성</td></tr>
+        <tr><td>⑤ 현장 분위기 조성 및 기준 균형 유지</td></tr>
+        <tr><td class="td-head" rowspan="2">소통·보고</td><td>⑥ 이슈 보고 정확성 및 독립 대응</td><td rowspan="2" style="color:var(--gray-mid);font-size:12px">이슈 보고 정확성, CL 방향성 내재화</td></tr>
+        <tr><td>⑦ CL 방향성 현장 내재화</td></tr>
+        <tr><td class="td-head">개선 제안</td><td>⑧ 반복 이슈 인식 및 개선 의견 제시</td><td style="color:var(--gray-mid);font-size:12px">운영 흐름 이해, 자기 주도적 문제 인식</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 2-3 활용 사례 -->
+<div class="section" id="s-rm-cases">
+  <div class="sec-eyebrow">2-3</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--green)"></div>롤모델 활용 사례</div>
+  <div class="sec-desc">동일 상황에서 기간제 캡틴과 정규직 캡틴의 행동 차이를 역량군별로 비교. <strong>기간제 캡틴이 틀린 것이 아니라 역할 범위 자체가 다름</strong>을 보여주는 데 초점.</div>
+
+  <!-- 사례 1 -->
+  <div class="case-card fade-in">
+    <div class="case-head" style="border-left:4px solid var(--blue)">
+      <div class="case-group">역량군 1 · 운영실행</div>
+      <div class="case-title">CL이 자리를 비운 피크타임, 주문이 갑자기 몰렸다</div>
+    </div>
+    <div class="case-sit">
+      <div class="case-sit-label">상황</div>
+      <div class="case-sit-text">금요일 저녁 피크타임. CL이 외부 미팅으로 자리를 비운 상태에서 예상보다 주문이 크게 몰렸다. 크루 한 명이 당일 조기 퇴근하여 인력이 부족하고, 재고 구역 일부가 정리되지 않아 피킹 속도가 느려지고 있다.</div>
+    </div>
+    <div class="case-compare">
+      <div class="case-col">
+        <div class="case-col-label cc-con">기간제 캡틴</div>
+        <span class="range-badge rb-con">역할 범위 내 행동</span>
+        <div class="case-col-text">CL에게 현재 상황을 보고하고 지시를 요청. 지시가 올 때까지 크루들에게 속도를 독려하며 현장을 유지. CL 지시가 오면 즉시 실행.</div>
+        <div class="case-col-note">상황 보고와 현장 유지까지가 역할 범위. 지시 없이 배치 변경을 독단으로 결정하는 것은 요구되지 않음.</div>
+      </div>
+      <div class="case-col">
+        <div class="case-col-label cc-reg">정규직 캡틴</div>
+        <span class="range-badge rb-reg">역할 범위 내 행동</span>
+        <div class="case-col-text">CL 연락 전에 먼저 크루 배치를 재조정. 재고 정리를 중단하고 전원을 피킹에 투입하며 자신도 직접 참여. 피크 후 CL에게 "○○시 주문 급증으로 배치 조정했고 처리 지연 없이 마무리했습니다"라고 사후 보고.</div>
+        <div class="case-col-note">CL 부재 시 기존 방향성 내에서 판단·실행 후 결과와 함께 보고하는 것이 요구 범위.</div>
+      </div>
+    </div>
+    <div class="case-insight">
+      <div class="case-insight-label">역할 범위의 차이</div>
+      <div class="case-insight-text">기간제 캡틴은 <strong>'보고 후 지시 대기'</strong>가 올바른 행동. 정규직 캡틴은 <strong>'판단 후 실행, 사후 보고'</strong>가 올바른 행동. 같은 상황에서 두 행동 모두 각자의 역할 기준에서는 맞음.</div>
+    </div>
+  </div>
+
+  <!-- 사례 2 -->
+  <div class="case-card fade-in">
+    <div class="case-head" style="border-left:4px solid var(--green)">
+      <div class="case-group">역량군 2 · 크루 리딩</div>
+      <div class="case-title">생산성은 높은데 태도 문제가 반복되는 크루가 있다</div>
+    </div>
+    <div class="case-sit">
+      <div class="case-sit-label">상황</div>
+      <div class="case-sit-text">입사 6개월 차 크루 A는 피킹 속도가 팀에서 가장 빠르다. 그런데 최근 신규 크루에게 불필요한 지적을 하거나 지시에 앞에서 반문하는 일이 잦아졌다. 다른 크루들의 분위기가 눈에 띄게 가라앉고 있다.</div>
+    </div>
+    <div class="case-compare">
+      <div class="case-col">
+        <div class="case-col-label cc-con">기간제 캡틴</div>
+        <span class="range-badge rb-con">역할 범위 내 행동</span>
+        <div class="case-col-text">해당 상황에서 즉각적으로 "지금은 이렇게 해줘"라고 수습. 분위기가 나빠지고 있다는 상황을 CL에게 사실 그대로 전달. CL의 결정을 기다림.</div>
+        <div class="case-col-note">현장의 즉각 수습과 상황 전달까지가 역할 범위. 크루 태도 문제에 대한 직접적 피드백과 평가 판단은 요구되지 않음.</div>
+      </div>
+      <div class="case-col">
+        <div class="case-col-label cc-reg">정규직 캡틴</div>
+        <span class="range-badge rb-reg">역할 범위 내 행동</span>
+        <div class="case-col-text">근무 중 A에게 따로 이야기. "속도는 정말 믿을 수 있는데, 신규 크루 앞에서의 태도가 팀 분위기에 영향을 주고 있어"라고 구체적으로 짚어줌. 이후 CL에게 "A 크루 태도 이슈가 반복되어 제가 직접 피드백했고, 경과를 지켜보겠습니다"라고 공유.</div>
+        <div class="case-col-note">성과와 태도를 분리하여 판단하고 직접 피드백 후 CL에게 공유하는 것이 요구 범위. 최종 인사 조치는 여전히 CL의 영역.</div>
+      </div>
+    </div>
+    <div class="case-insight">
+      <div class="case-insight-label">역할 범위의 차이</div>
+      <div class="case-insight-text">기간제 캡틴은 <strong>'현장 수습과 사실 전달'</strong>이 역할 범위. 정규직 캡틴은 <strong>'직접 피드백 + CL 공유'</strong>까지 역할 범위에 포함. 최종 인사 판단은 두 역할 모두에서 CL 권한.</div>
+    </div>
+  </div>
+
+  <!-- 사례 3 -->
+  <div class="case-card fade-in">
+    <div class="case-head" style="border-left:4px solid var(--amber)">
+      <div class="case-group">역량군 3 · 소통·보고</div>
+      <div class="case-title">냉장 설비에 이상이 생겼다, CL은 지금 연락이 안 된다</div>
+    </div>
+    <div class="case-sit">
+      <div class="case-sit-label">상황</div>
+      <div class="case-sit-text">오전 운영 중 냉장 구역 온도가 평소보다 높게 측정되고 있다. 설비 이상인지 일시적 변동인지 불명확하다. CL은 외부 미팅 중이라 전화를 받지 않는다. 해당 구역에는 유제품과 신선식품이 보관되어 있다.</div>
+    </div>
+    <div class="case-compare">
+      <div class="case-col">
+        <div class="case-col-label cc-con">기간제 캡틴</div>
+        <span class="range-badge rb-con">역할 범위 내 행동</span>
+        <div class="case-col-text">CL에게 전화와 문자로 상황을 알림. CL 지시가 올 때까지 온도 변화를 계속 확인하고, 이상이 심화될 경우 다시 연락을 시도. CL이 연락되면 지시에 따라 움직임.</div>
+        <div class="case-col-note">이상 감지와 보고, 상황 모니터링까지가 역할 범위. 설비팀 직접 연락 등 외부 대응 판단은 요구되지 않음.</div>
+      </div>
+      <div class="case-col">
+        <div class="case-col-label cc-reg">정규직 캡틴</div>
+        <span class="range-badge rb-reg">역할 범위 내 행동</span>
+        <div class="case-col-text">온도 변화 추이를 확인하며 이상이 지속되자 기준에 따라 설비팀에 직접 연락. 해당 구역 상품 상태를 점검. CL에게 문자로 "냉장 온도 이상 감지 → 설비팀 연락 완료, 현재 ○○℃, 상품 이상 없음"을 남김. CL 복귀 후 경과와 조치를 상세 보고.</div>
+        <div class="case-col-note">상황 판단 후 유관부서 연락까지 스스로 처리하고, 결과 중심으로 사후 보고하는 것이 요구 범위.</div>
+      </div>
+    </div>
+    <div class="case-insight">
+      <div class="case-insight-label">역할 범위의 차이</div>
+      <div class="case-insight-text">기간제 캡틴은 <strong>'보고하고 지시를 기다리는 것'</strong>이 올바른 행동. 정규직 캡틴은 <strong>'판단하여 조치하고 결과를 보고하는 것'</strong>이 올바른 행동. 두 행동 모두 각자의 기준에서 맞음.</div>
+    </div>
+  </div>
+
+  <!-- 사례 4 -->
+  <div class="case-card fade-in">
+    <div class="case-head" style="border-left:4px solid var(--purple)">
+      <div class="case-group">역량군 4 · 개선 제안</div>
+      <div class="case-title">같은 피킹 오류가 매주 반복된다</div>
+    </div>
+    <div class="case-sit">
+      <div class="case-sit-label">상황</div>
+      <div class="case-sit-text">최근 3주째 동일한 구역에서 유사 상품 혼동으로 인한 피킹 오류가 반복되고 있다. 크루들에게 주의를 줘도 다음 주에 또 발생한다. CL도 인지하고 있지만 아직 별도 조치는 없는 상황이다.</div>
+    </div>
+    <div class="case-compare">
+      <div class="case-col">
+        <div class="case-col-label cc-con">기간제 캡틴</div>
+        <span class="range-badge rb-con">역할 범위 내 행동</span>
+        <div class="case-col-text">오류가 발생할 때마다 해당 크루에게 즉각 피드백하고 재발하지 않도록 주의를 줌. CL에게 "이번 주에도 해당 구역에서 오류가 났습니다"라고 발생 사실을 보고.</div>
+        <div class="case-col-note">발생 시 즉각 대응과 사실 보고까지가 역할 범위. 반복 패턴 분석이나 구조적 원인 파악·제안은 요구되지 않음.</div>
+      </div>
+      <div class="case-col">
+        <div class="case-col-label cc-reg">정규직 캡틴</div>
+        <span class="range-badge rb-reg">역할 범위 내 행동</span>
+        <div class="case-col-text">3주치 오류 발생 시간대, 담당 크루, 혼동된 상품 조합을 간단히 정리. CL에게 "해당 구역 오류가 3주 연속 발생하고 있으며 주로 ○○·△△ 상품 혼동입니다. 상품 위치 분리나 구분 라벨 부착을 검토해보시면 어떨까요?"라고 제안. CL의 결정에 따름.</div>
+        <div class="case-col-note">반복 이슈를 패턴으로 인식하고 원인과 함께 개선 의견을 제시하는 것이 요구 범위. 실제 개선 방식의 결정은 CL의 영역.</div>
+      </div>
+    </div>
+    <div class="case-insight">
+      <div class="case-insight-label">역할 범위의 차이</div>
+      <div class="case-insight-text">기간제 캡틴은 <strong>'발생 시 대응과 사실 보고'</strong>가 역할 범위. 정규직 캡틴은 <strong>'패턴 인식과 구조적 원인 제안'</strong>까지 역할 범위에 포함. 반복 이슈를 '크루 개인의 실수'가 아닌 '구조적 문제'로 바라보는 시각이 핵심 차이.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Part 3 -->
+<div class="part-banner" id="part3">
+  <span class="part-num">PART 03</span>
+  <span class="part-title">롤모델을 활용한 평가 방법 및 평가 도구</span>
+  <div class="part-divider"></div>
+</div>
+
+<!-- 3-1 프로세스 -->
+<div class="section" id="s-process">
+  <div class="sec-eyebrow">3-1</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--amber)"></div>평가 프로세스 및 방법</div>
+
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:50px">단계</th><th style="width:140px">내용</th><th>세부 사항</th><th style="width:160px">주체</th><th style="width:110px">주기</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head" style="text-align:center">1</td><td class="td-head">평가 누적</td><td>역량 평가서 작성 및 기록 축적</td><td>CL 작성 / GM 검토</td><td>3개월 1회</td></tr>
+        <tr style="background:var(--blue-pale)"><td class="td-head" style="text-align:center;color:var(--blue)">2</td><td class="td-head" style="color:var(--blue)">캘리브레이션</td><td>센터별 평가 편차 보정 세션 운영</td><td>B마트운영팀장 주관<br>GM 참여</td><td>평가 직후 분기별</td></tr>
+        <tr><td class="td-head" style="text-align:center">3</td><td class="td-head">대상자 풀 확정</td><td>전환 자격 요건 충족 대상자 목록 정기 정리</td><td>GM 주도</td><td>분기 1회</td></tr>
+        <tr><td class="td-head" style="text-align:center">4</td><td class="td-head">TO 발생 확인</td><td>정규직 TO 발생 여부 공식 확인</td><td>팀장 승인</td><td>비정기 (TO 발생 시)</td></tr>
+        <tr><td class="td-head" style="text-align:center">5</td><td class="td-head">최종 선발</td><td>누적 평가 이력 + 캘리브레이션 보정 점수 + CL 의견 + 배치 적합성 종합 결정</td><td>GM + 팀장</td><td>TO 발생 후 2주 내</td></tr>
+        <tr><td class="td-head" style="text-align:center">6</td><td class="td-head">전환 및 온보딩</td><td>계약 전환 + 4주 온보딩 프로그램 운영</td><td>B마트교육파트</td><td>전환일 기준 4주</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="principle-grid fade-in">
+    <div class="principle-item">
+      <div class="principle-num">①</div>
+      <div class="principle-text"><strong>평가는 상시, 전환은 TO 발생 시</strong> : 평가 주기와 전환 타이밍을 분리하여 운영. TO가 없어도 평가는 계속 누적됨.</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">②</div>
+      <div class="principle-text"><strong>근거 기반 의사결정</strong> : 평가서 없이는 전환 없음. 모든 전환 결정은 누적 평가 이력을 문서 근거로 삼음.</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">③</div>
+      <div class="principle-text"><strong>CL이 관찰, GM이 결정</strong> : CL은 현장 관찰과 평가를 담당하고, 전환 결정 권한은 GM과 팀장에게 있음.</div>
+    </div>
+  </div>
+
+  <div class="sec-desc fade-in" style="margin-top:1.5rem">전환 자격 요건</div>
+  <div class="req-grid fade-in">
+    <div class="req-card req-special">
+      <div class="req-label">재직 기간</div>
+      <div class="req-val">B마트 근무경력<br>2년 이상</div>
+    </div>
+    <div class="req-card req-special">
+      <div class="req-label">평가 회차</div>
+      <div class="req-val">4회차 이상<br>누적 완료</div>
+    </div>
+    <div class="req-card req-special">
+      <div class="req-label">점수 조건</div>
+      <div class="req-val">전 항목<br>충족(2점) 이상</div>
+    </div>
+    <div class="req-card" style="border-color:var(--red-mid);background:var(--red-light)">
+      <div class="req-label" style="color:var(--red-mid)">안전·재고 ③</div>
+      <div class="req-val" style="color:var(--red-mid)">충족 이상 필수<br>(미흡 시 보류)</div>
+    </div>
+    <div class="req-card">
+      <div class="req-label">부적합 체크리스트</div>
+      <div class="req-val">결격 항목<br>해당 없음</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3-2 평가서 -->
+<div class="section" id="s-sheet">
+  <div class="sec-eyebrow">3-2</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--amber)"></div>평가서</div>
+
+  <div class="file-links fade-in">
+    <a href="기간제_캡틴_역량평가서.html" class="file-link">📋 기간제 캡틴 역량 평가서 (HTML)</a>
+  </div>
+
+  <div class="sec-desc">CL이 3개월간의 현장 관찰을 바탕으로 작성하며, GM이 검토·서명. 8개 항목, 3점 척도(미흡·충족·우수)로 구성.</div>
+
+  <div class="scale-grid fade-in">
+    <div class="scale-card sc1">
+      <div class="sc-num">1</div>
+      <div class="sc-name">미흡</div>
+      <div class="sc-desc">기간제 캡틴으로서의 역량은 갖추고 있으나 정규직 캡틴에게 요구되는 수준에는 미치지 못함. CL의 지속적 지도 또는 개입이 필요한 상태.</div>
+    </div>
+    <div class="scale-card sc2">
+      <div class="sc-num">2</div>
+      <div class="sc-name">충족</div>
+      <div class="sc-desc">정규직 캡틴에게 기대되는 기본 수준을 안정적으로 수행하는 상태.</div>
+    </div>
+    <div class="scale-card sc3">
+      <div class="sc-num">3</div>
+      <div class="sc-name">우수</div>
+      <div class="sc-desc">기대 수준을 초과하여 주도적·구조적으로 역량을 발휘하며 주변에 긍정적 영향을 미치는 상태.</div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:110px">역량군</th><th>평가 항목</th><th style="width:90px">비고</th></tr></thead>
+      <tbody>
+        <tr><td class="td-head" rowspan="3">운영실행</td><td>① 운영 기준 숙지 및 독립 적용</td><td></td></tr>
+        <tr><td>② 시간대별 운영 흐름 관리</td><td></td></tr>
+        <tr><td>③ 안전 및 재고관리 이행</td><td class="td-red">미흡 시 전환 보류</td></tr>
+        <tr><td class="td-head" rowspan="2">크루 리딩</td><td>④ 크루 생산성 관리 및 피드백</td><td></td></tr>
+        <tr><td>⑤ 현장 분위기 조성 및 기준 균형 유지</td><td></td></tr>
+        <tr><td class="td-head" rowspan="2">소통·보고</td><td>⑥ 이슈 보고 정확성 및 독립 대응</td><td></td></tr>
+        <tr><td>⑦ CL 방향성 현장 내재화</td><td></td></tr>
+        <tr><td class="td-head">개선 제안</td><td>⑧ 반복 이슈 인식 및 개선 의견 제시</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 3-3 체크리스트 -->
+<div class="section" id="s-checklist">
+  <div class="sec-eyebrow">3-3</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--amber)"></div>부적합 체크리스트</div>
+
+  <div class="file-links fade-in">
+    <a href="정규직_전환_부적합_체크리스트.html" class="file-link">🔍 정규직 전환 부적합 체크리스트 (HTML)</a>
+  </div>
+
+  <div class="card-grid-2 fade-in">
+    <div class="card">
+      <div class="card-title">도구의 목적</div>
+      <div class="card-desc">역량 평가서가 "할 수 있는가"를 측정한다면, 부적합 체크리스트는 "전환해서는 안 되는 이유가 있는가"를 확인하는 도구. 평가 점수와 무관하게 결격 항목 하나라도 해당되면 전환 보류.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">사용 시점 및 주체</div>
+      <div class="card-desc">· 시점 : 역량 평가서 기준 충족 확인 후, 최종 선발 전 단계<br>· 주체 : GM 작성 / 팀장 최종 확인<br>· 원칙 : 모든 판단은 관찰·기록된 사실에 근거. 주관적 인상으로 판단 불가.</div>
+    </div>
+  </div>
+
+  <div class="info-box fade-in">
+    <strong>사전 게이트.</strong> 기간제 캡틴으로 6개월 미만 재직한 경우, 체크리스트 진입 전 전환 대상에서 자동 제외.
+  </div>
+
+  <div class="tbl-wrap fade-in">
+    <table>
+      <thead><tr><th style="width:130px">영역</th><th>확인 항목</th><th style="width:280px">판단 기준 요약</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-head" rowspan="3" style="color:var(--red-mid)">A. 노무·근태 리스크</td>
+          <td>최근 12개월 내 징계·경고 이력</td>
+          <td>구두 경고 2회 이상 또는 서면 경고 1회 이상</td>
+        </tr>
+        <tr>
+          <td>최근 6개월 내 무단결근·잦은 지각</td>
+          <td>무단결근 1회 이상 또는 월 3회 이상 지각 2개월 연속</td>
+        </tr>
+        <tr>
+          <td>노무 분쟁·민원 이력 (귀책 확인 시)</td>
+          <td>조사 결과 대상자 귀책이 확인된 경우에 한함</td>
+        </tr>
+        <tr>
+          <td class="td-head" rowspan="3" style="color:var(--red-mid)">B. 태도·조직 적합성</td>
+          <td>운영기준 반복 위반</td>
+          <td>지도 후 동일 유형 위반 2회 이상 재발 기록</td>
+        </tr>
+        <tr>
+          <td>공개적 지시 거부</td>
+          <td>크루 앞에서 CL/GM 지시를 공개적으로 거부한 보고 기록</td>
+        </tr>
+        <tr>
+          <td>크루 대상 부적절 언행</td>
+          <td>CL에게 보고된 구체적 사례 있음</td>
+        </tr>
+        <tr>
+          <td class="td-head" rowspan="2" style="color:var(--red-mid)">C. 운영 안정성 이상</td>
+          <td>반복 안전사고 관여</td>
+          <td>평가 기간 내 2회 이상 직접 관여 또는 지도 후 재발</td>
+        </tr>
+        <tr>
+          <td>재고 중대 오류 반복</td>
+          <td>동일 유형 오류 지도 후 2회 이상 반복</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tbl-cap">전 항목 절대 결격 — 단 하나라도 해당되면 역량 평가 점수와 무관하게 즉시 전환 보류</div>
+  </div>
+</div>
+
+<!-- Part 4 -->
+<div class="part-banner" id="part4">
+  <span class="part-num">PART 04</span>
+  <span class="part-title">26~27년 평가 운영 계획</span>
+  <div class="part-divider"></div>
+</div>
+
+<!-- 4 운영 계획 -->
+<div class="section" id="s-plan">
+  <div class="sec-eyebrow">4</div>
+  <div class="sec-title"><div class="sec-accent" style="background:var(--purple)"></div>26~27년 평가 운영 계획</div>
+
+  <!-- 26년 5~6월 -->
+  <div class="tl-phase fade-in">
+    <div class="tl-phase-title">26년 5~6월 <span class="tl-phase-sub">기반 정의 및 도구 확정</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:120px">시점</th><th>주요 내용</th><th style="width:200px">주체</th></tr></thead>
+        <tbody>
+          <tr><td class="td-head">5월 2주차</td><td>방향성 및 시행계획 보고 (경영진)</td><td>조직파트너팀 + 운영팀장</td></tr>
+          <tr><td class="td-head">5월 2~3주차</td><td>캡틴 R&R 구분 체계 확정 (정규직/기간제 역할 경계 합의)</td><td>운영팀장</td></tr>
+          <tr><td class="td-head">5월 3~4주차</td><td>역량 기준 확정 (행동지표, 평가 척도, 항목 수)</td><td>운영팀장 + 조직파트너팀</td></tr>
+          <tr><td class="td-head">5월 4주차</td><td>부적합 체크리스트 확정 (판정 주체·기록 방식·재도전 조건)</td><td>운영팀장 + 조직파트너팀</td></tr>
+          <tr><td class="td-head">5월 4주차</td><td>평가 도구 시뮬레이션 (GM/CL 교차 평가, 편차 확인)</td><td>GM / CL</td></tr>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">6월 1주차</td><td><strong>개편안 전체 내용 경영진 최종 보고 및 승인</strong></td><td>조직파트너팀 + 운영팀장</td></tr>
+          <tr><td class="td-head">6월 2주차</td><td>평가자 교육 실시 (GM / CL 대상, 행동지표 기준 공유)</td><td>B마트교육파트</td></tr>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">6월 3주차</td><td><strong>구성원 공지 및 1차 정기 평가 시행</strong></td><td>GM / CL</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 26년 6~12월 -->
+  <div class="tl-phase fade-in">
+    <div class="tl-phase-title">26년 6~12월 <span class="tl-phase-sub">1~3차 정기 평가 운영 · Phase 1 병행</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:120px">시점</th><th>주요 내용</th><th style="width:200px">주체</th></tr></thead>
+        <tbody>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">6월 3주차</td><td><strong>1차 정기 평가 시행</strong> (Phase 1 병행 : SOP 시험·면접 유지)</td><td>GM / CL</td></tr>
+          <tr><td class="td-head">7월 1주차</td><td>1차 캘리브레이션 세션 (1차 평가 편차 보정)</td><td>B마트운영팀장 주관 / GM 참여</td></tr>
+          <tr><td class="td-head">7월 1~2주차</td><td>1차 평가 결과 기반 대상자 풀 1차 정리</td><td>GM</td></tr>
+          <tr><td class="td-head">7~8월</td><td>미선발자 피드백 제공 및 개선 방향 공유</td><td>CL</td></tr>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">9월 4주차</td><td><strong>2차 정기 평가 시행</strong></td><td>GM / CL</td></tr>
+          <tr><td class="td-head">10월 1주차</td><td>2차 캘리브레이션 세션</td><td>B마트운영팀장 주관 / GM 참여</td></tr>
+          <tr><td class="td-head">10월 1~2주차</td><td>대상자 풀 업데이트 (2회차 충족 인원 확인)</td><td>GM</td></tr>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">12월 3주차</td><td><strong>3차 정기 평가 시행</strong></td><td>GM / CL</td></tr>
+          <tr><td class="td-head">12월 4주차</td><td>3차 캘리브레이션 세션 + 26년 운영 회고</td><td>B마트운영팀장 주관</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 27년 -->
+  <div class="tl-phase fade-in">
+    <div class="tl-phase-title">27년 <span class="tl-phase-sub">Phase 1 정규직 전환 및 Phase 2 전환 준비</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:120px">시점</th><th>주요 내용</th><th style="width:200px">주체</th></tr></thead>
+        <tbody>
+          <tr><td class="td-head">27년 1월</td><td>누적 평가 이력 기반 전환 적합 대상자 풀 정리</td><td>GM</td></tr>
+          <tr style="background:var(--blue-pale)"><td class="td-head" style="color:var(--blue)">27년 3월 4주차</td><td><strong>4차 정기 평가 시행</strong> (자격 요건 4회차 충족 첫 시점)</td><td>GM / CL</td></tr>
+          <tr><td class="td-head">27년 4월 1주차</td><td>4차 캘리브레이션 + 전환 자격 요건 충족 인원 확정</td><td>B마트운영팀장 주관</td></tr>
+          <tr><td class="td-head">27년 4~8월</td><td>부적합 체크리스트 검토 (풀 내 후보 최종 검증)</td><td>GM</td></tr>
+          <tr style="background:#E8F5E9"><td class="td-head" style="color:var(--green)">27년 9월</td><td><strong>Phase 1 정규직 전환 선발</strong> (TO 26명, 지원 풀 87명)</td><td>GM + 팀장</td></tr>
+          <tr><td class="td-head">27년 9~10월</td><td>전환자 온보딩 4주 운영</td><td>B마트교육파트</td></tr>
+          <tr style="background:#E8F5E9"><td class="td-head" style="color:var(--green)">27년 말</td><td><strong>Phase 2 정규직 전환</strong> (TO 20명, 지원 풀 98명)</td><td>GM + 팀장</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tl-note fade-in">
+      <strong>27년 운영 주요 고려사항.</strong><br>
+      · <strong>평가 데이터 부족 이슈</strong> : 27년 Phase 2 전환(27년 말) 기준, 26년 6월·9월·12월 + 27년 3월 총 4회 평가 데이터 확보 가능. 단, 26년 6월 이후 입사자는 4회차 미충족 가능성이 있어 대상자 풀 규모 사전 확인 필요.<br>
+      · <strong>TO 이관</strong> : 27년 TO 중 일부를 28년 Phase 3 프로세스로 이관하는 방안 검토. 당해 미소진이 실적 미충원으로 해석되지 않도록 HR실·운영실 간 사전 공유·대응 필요.<br>
+      · <strong>캘리브레이션 정례화</strong> : 분기별 캘리브레이션 세션을 B마트운영팀장 주관으로 정례 운영하여 센터 간 평가 편차를 지속 관리.
+    </div>
+  </div>
+
+  <!-- 타임라인 요약 -->
+  <div class="fade-in" style="margin-top:1.5rem">
+    <div class="sec-desc">운영 계획 타임라인 요약</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>26년 5~6월</th><th>26년 6~12월</th><th>27년 1~9월</th><th>27년 말</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="vertical-align:top;font-size:12px;line-height:1.8">도구 확정<br>평가자 교육<br>경영진 승인<br>구성원 소통</td>
+            <td style="vertical-align:top;font-size:12px;line-height:1.8">1~3차 평가<br>캘리브레이션<br>운영 안정화<br>풀 관리 정례화</td>
+            <td style="vertical-align:top;font-size:12px;line-height:1.8">4차 평가<br>자격 요건 충족 확인<br>최종 선발</td>
+            <td style="vertical-align:top;font-size:12px;line-height:1.8">Phase 1·2 전환 선발<br>온보딩 운영<br>28년 준비</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+const sections = document.querySelectorAll('[id]');
+const navItems = document.querySelectorAll('.sb-item');
+const scrollObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const a = document.querySelector(`.sb-item[href="#${e.target.id}"]`);
+      if(a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => scrollObs.observe(s));
+</script>
+</body>
+</html>
